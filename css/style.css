@@ -22,7 +22,6 @@ header {
   color: white;
   padding: 1em 1.5em;
   position: relative;
-  z-index: 1100;
 }
 
 #menuBtn {
@@ -44,7 +43,7 @@ header {
   color: white;
   padding: 1em;
   transition: transform 0.3s ease;
-  z-index: 1200;
+  z-index: 1000;
   overflow-y: auto;
 }
 
@@ -64,7 +63,6 @@ header {
 nav ul {
   list-style: none;
   padding: 0;
-  margin: 0;
 }
 
 nav li {
@@ -78,10 +76,12 @@ nav a {
   background-color: var(--accent);
   padding: 0.5em 1em;
   border-radius: 4px;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
+  display: inline-block;
   transition: background 0.3s;
+}
+
+nav a i {
+  margin-right: 0.5em;
 }
 
 nav a:hover {
@@ -107,16 +107,12 @@ section.visible {
 .inicio-fondo-carousel {
   position: relative;
   width: 100%;
-  height: calc(100vh - 116px);
-  max-height: 600px;
-  min-height: 300px;
+  height: 250px;
   overflow: hidden;
   border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 2em;
-  box-sizing: border-box;
 }
 
 .inicio-fondo-carousel .slide {
@@ -127,15 +123,10 @@ section.visible {
   background-position: center;
   opacity: 0;
   transition: opacity 1s ease-in-out;
-  border-radius: 8px;
-  top: 0;
-  left: 0;
-  z-index: 0;
 }
 
 .inicio-fondo-carousel .slide.active {
   opacity: 1;
-  z-index: 1;
 }
 
 .texto-inicio {
@@ -144,70 +135,19 @@ section.visible {
   z-index: 2;
   text-align: center;
   background-color: rgba(0, 0, 0, 0.4);
-  padding: 1em 2em;
+  padding: 1em;
   border-radius: 8px;
-  max-width: 600px;
-}
-
-.menu-productos {
-  display: flex;
-  gap: 1em;
-  margin: 1.5em 0;
-  justify-content: center;
-  transition: all 0.3s ease;
-}
-
-.menu-productos:hover .producto-link {
-  transform: scale(1.05);
-  opacity: 1;
-}
-
-.producto-link {
-  background-color: var(--accent);
-  color: white;
-  padding: 1em 2em;
-  border-radius: 8px;
-  cursor: pointer;
-  text-align: center;
-  transition: transform 0.3s ease, opacity 0.3s;
-  opacity: 0.8;
-}
-
-.producto-link:hover {
-  background-color: var(--header-bg);
-  transform: scale(1.1);
-  opacity: 1;
-}
-
-.detalle-producto {
-  margin-top: 2em;
-  border-top: 1px solid #ccc;
-  padding-top: 1em;
-  display: none;
-  animation: fadeIn 0.5s ease forwards;
-}
-
-.detalle-producto.visible {
-  display: block;
-}
-
-.imagen-producto {
-  width: 100%;
-  max-width: 400px;
-  height: auto;
-  object-fit: contain;
 }
 
 .boton-compra {
   background-color: var(--accent);
   color: white;
   border: none;
-  padding: 0.7em 1.2em;
-  border-radius: 6px;
+  padding: 0.5em 1em;
+  border-radius: 4px;
   font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-top: 1em;
+  transition: background 0.3s;
 }
 
 .boton-compra:hover {
@@ -219,7 +159,7 @@ footer {
   box-sizing: border-box;
   background-color: var(--primary);
   color: white;
-  padding: 1.5em 2em;
+  padding: 2em;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -227,7 +167,6 @@ footer {
   flex-wrap: wrap;
   gap: 1em;
   font-size: 0.9em;
-  height: 52px;
 }
 
 footer h3 {
@@ -239,13 +178,34 @@ footer p {
   max-width: 300px;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
+.imagen-producto {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  footer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1.5em 1em;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  .inicio-fondo-carousel {
+    height: 200px;
+  }
+
+  .texto-inicio h2 {
+    font-size: 1.3em;
+  }
+
+  .texto-inicio p {
+    font-size: 1em;
+  }
+
+  main {
+    padding: 1em;
   }
 }
