@@ -5,6 +5,11 @@ document.addEventListener("DOMContentLoaded", function () {
   const links = document.querySelectorAll("nav a");
   const sections = document.querySelectorAll("main .seccion");
 
+  const modal = document.getElementById("modal");
+  const modalMessage = document.getElementById("modal-message");
+  const modalClose = document.querySelector(".close-modal");
+  const compraBtns = document.querySelectorAll(".boton-compra");
+
   const lastSection = localStorage.getItem("ultima-seccion");
   if (lastSection && document.getElementById(lastSection)) {
     sections.forEach(sec => sec.classList.remove("visible"));
@@ -44,6 +49,30 @@ document.addEventListener("DOMContentLoaded", function () {
       slides[currentIndex].classList.add("active");
     }, 5000);
   }
+
+  compraBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      modalMessage.textContent = "Este producto está agotado actualmente. ¡Gracias por tu interés! Pronto estará disponible.";
+      modal.style.display = "block";
+      modal.querySelector(".modal-content").focus();
+    });
+  });
+
+  modalClose.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+
+  window.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.style.display = "none";
+    }
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      modal.style.display = "none";
+    }
+  });
 });
 
 function cambiarImagen(button, direccion) {

@@ -6,11 +6,17 @@
   --text: #2F3E46;
 }
 
+/* 1. Box-sizing global */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: sans-serif;
   background-color: var(--bg);
   color: var(--text);
+  line-height: 1.6; /* 2. Legibilidad */
 }
 
 header {
@@ -41,19 +47,49 @@ header {
   transition: left 0.3s ease;
   z-index: 1000;
   overflow-y: auto;
+  scroll-behavior: smooth; /* 10. Scroll suave */
 }
 
 .sidebar.visible {
   left: 0;
 }
 
-#closeBtn {
+@media (max-width: 768px) {
+  .sidebar {
+    width: 80%; /* 3. Sidebar responsive */
+  }
+
+  .inicio-fondo-carousel {
+    height: 30vh;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .producto-link {
+    flex: 1 1 100%;
+  }
+
+  .menu-productos {
+    gap: 0.5rem;
+  }
+}
+
+#closeBtn,
+#menuBtn {
   background: none;
   border: none;
   font-size: 2rem;
   color: white;
-  float: right;
   cursor: pointer;
+  user-select: none; /* 9. Evita selección */
+}
+
+button:focus-visible {
+  outline: 2px solid var(--accent); /* 5. Focus accesible */
+  outline-offset: 2px;
 }
 
 nav ul {
@@ -131,23 +167,27 @@ footer {
   background-size: cover;
   background-position: center;
   opacity: 0;
-  transition: opacity 1s ease-in-out;
+  transform: scale(1.02); /* 6. Transiciones suaves */
+  transition: opacity 1s ease-in-out, transform 0.5s ease;
 }
 
 .inicio-fondo-carousel .slide.active {
   opacity: 1;
+  transform: scale(1);
 }
 
 .texto-inicio {
   position: absolute;
   z-index: 10;
   bottom: 20px;
-  left: 20px;
+  left: 50%;
+  transform: translateX(-50%);
   background: rgba(0, 0, 0, 0.6);
   padding: 1rem;
   border-radius: 10px;
   color: white;
   max-width: 90%;
+  text-align: center;
 }
 
 .menu-productos {
@@ -164,10 +204,10 @@ footer {
   color: white;
   border-radius: 5px;
   font-weight: 600;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease; /* 8. Transición botones */
   flex: 1 1 150px;
   text-align: center;
-  user-select: none;
+  user-select: none; /* 9. Evita selección */
 }
 
 .producto-link:hover {
@@ -205,7 +245,7 @@ footer {
   cursor: pointer;
   border-radius: 5px;
   user-select: none;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .btn-galeria:hover {
@@ -220,14 +260,15 @@ footer {
   border-radius: 5px;
   cursor: pointer;
   font-weight: 600;
-  transition: background-color 0.3s ease;
+  user-select: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .boton-compra:hover {
   background-color: var(--primary);
 }
 
-/* Modal styles */
+/* Modal */
 .modal {
   display: none;
   position: fixed;
@@ -260,23 +301,4 @@ footer {
   font-weight: bold;
   cursor: pointer;
   color: #333;
-}
-
-@media (max-width: 768px) {
-  .inicio-fondo-carousel {
-    height: 30vh;
-  }
-
-  .footer-content {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .producto-link {
-    flex: 1 1 100%;
-  }
-
-  .menu-productos {
-    gap: 0.5rem;
-  }
 }
