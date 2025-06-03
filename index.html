@@ -2,117 +2,77 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="icon" type="image/png" href="assets/favicon.png" />
-  <base href="/HydroMind1/">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HydroMind</title>
-
-  <!-- Iconos de FontAwesome CDN -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    integrity="sha512-papb4v7+p7LRr+y0vC7pO+Ukn4BTZwH3LlckuKdbFzHePklwYnL3ZP4pR/e+1e8tpvquTA+97mdqXv1dPkLW0g=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
-
-  <link rel="stylesheet" href="css/style.css" />
-  <script defer src="js/main.js"></script>
+  <link rel="stylesheet" href="estilos.css" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <script src="https://kit.fontawesome.com/tu_codigo_aqui.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <div id="sidebar" class="sidebar">
+  <header>
+    <button id="menuBtn"><i class="fas fa-bars"></i></button>
+    <h1>HydroMind</h1>
+  </header>
+
+  <aside class="sidebar" id="sidebar">
     <button id="closeBtn">&times;</button>
     <nav>
       <ul>
-        <li><a href="#" data-target="inicio"><i class="fas fa-home"></i> Inicio</a></li>
-        <li><a href="#" data-target="sobre-nosotros"><i class="fas fa-users"></i> Sobre Nosotros</a></li>
-        <li><a href="#" data-target="productos"><i class="fas fa-box-open"></i> Nuestros Productos</a></li>
-        <li><a href="#" data-target="contacto"><i class="fas fa-envelope"></i> Contacto</a></li>
+        <li><a href="#inicio"><i class="fas fa-home"></i> Inicio</a></li>
+        <li><a href="#productos"><i class="fas fa-box"></i> Productos</a></li>
+        <li><a href="#contacto"><i class="fas fa-envelope"></i> Contacto</a></li>
       </ul>
     </nav>
-  </div>
-
-  <header>
-    <button id="menuBtn">&#9776;</button>
-    <img src="assets/favicon.png" alt="HydroMind Logo" class="logo-encabezado" /> 
-    <h1 class="titulo-principal">HydroMind</h1>
-  </header>
+  </aside>
 
   <main>
-    <section id="inicio" class="seccion visible">
+    <section id="inicio" class="visible">
       <div class="inicio-fondo-carousel">
-        <div class="slide active" style="background-image: url('assets/fondo1.jpg');"></div>
-        <div class="slide" style="background-image: url('assets/fondo2.jpg');"></div>
+        <div class="slide active" style="background-image: url('img/1.jpg');"></div>
+        <div class="slide" style="background-image: url('img/2.jpg');"></div>
+        <div class="slide" style="background-image: url('img/3.jpg');"></div>
         <div class="texto-inicio">
-          <h2>Bienvenido</h2>
-          <p>Soluciones de riego automatizado para el campo y jardín.</p>
+          <h2>Bienvenido a HydroMind</h2>
+          <p>Soluciones inteligentes para el manejo del agua.</p>
         </div>
       </div>
     </section>
 
-    <section id="sobre-nosotros" class="seccion">
-      <h2>Sobre nosotros</h2>
-      <p>Somos una empresa que ofrece sistemas de riego eficientes y tecnológicos.</p>
+    <section id="productos">
+      <h2>Nuestros Productos</h2>
+      <div class="menu-productos">
+        <div class="producto-link" onclick="mostrarDetalle('producto1')">Sensor de humedad</div>
+        <div class="producto-link" onclick="mostrarDetalle('producto2')">Controlador automático</div>
+      </div>
+
+      <div id="producto1" class="detalle-producto">
+        <h3>Sensor de humedad</h3>
+        <img src="img/sensor.jpg" alt="Sensor de humedad" class="imagen-producto">
+        <p>Mide con precisión la humedad del suelo.</p>
+        <button class="boton-compra">Comprar</button>
+      </div>
+
+      <div id="producto2" class="detalle-producto">
+        <h3>Controlador automático</h3>
+        <img src="img/controlador.jpg" alt="Controlador" class="imagen-producto">
+        <p>Automatiza el riego según la humedad detectada.</p>
+        <button class="boton-compra">Comprar</button>
+      </div>
     </section>
 
-    <section id="productos" class="seccion">
-      <h2>Nuestros productos</h2>
-
-      <!-- Menú animado de productos -->
-      <div class="menu-productos" id="menuProductos">
-        <div class="producto-link" onclick="mostrarProducto('kit-riego')">
-          Kit de Riego Doméstico
-        </div>
-        <div class="producto-link" onclick="mostrarProducto('sistema-cultivos')">
-          Sistema para Cultivos
-        </div>
-      </div>
-
-      <!-- Vista individual de productos -->
-      <div id="kit-riego" class="detalle-producto oculto">
-        <h3>Kit de Riego Doméstico</h3>
-        <p>Automatiza el riego de jardines pequeños. Incluye bomba, microcontrolador y mangueras.</p>
-        <p>Programable por:</p>
-        <p>-Horarios.</p>
-        <p>-Porcentaje de humedad en el suelo.</p>
-        <div class="galeria-producto">
-          <button class="btn-galeria" onclick="cambiarImagen(this, -1)">⟨</button>
-          <img src="assets/producto1-1.jpg" alt="Kit Riego Imagen 1" class="imagen-producto" data-index="0" data-images='["assets/producto1-1.jpg", "assets/producto1-2.jpg", "assets/producto1-3.jpg"]'>
-          <button class="btn-galeria" onclick="cambiarImagen(this, 1)">⟩</button>
-        </div>
-
-        <button class="boton-compra">Comprar</button>
-      </div>
-
-      <div id="sistema-cultivos" class="detalle-producto oculto">
-        <h3>Sistema para Cultivos</h3>
-        <p>Riego automatizado para parcelas medianas.</p>
-        <p>Programable por:</p>
-        <p>-Horarios.</p>
-        <p>-Porcentaje de humedad en el suelo.</p>
-        <div class="galeria-producto">
-          <button class="btn-galeria" onclick="cambiarImagen(this, -1)">⟨</button>
-          <img src="assets/producto2-1.jpg" alt="Sistema Cultivos Imagen 1" class="imagen-producto" data-index="0" data-images='["assets/producto2-1.jpg", "assets/producto2-2.jpg", "assets/producto2-3.jpg"]'>
-          <button class="btn-galeria" onclick="cambiarImagen(this, 1)">⟩</button>
-        </div>
-
-        <!-- Botón de compra en vez de texto -->
-        <button class="boton-compra">Comprar</button>
-      </div>
+    <section id="contacto">
+      <h2>Contacto</h2>
+      <p>Puedes contactarnos al correo: <strong>info@hydromind.com</strong></p>
     </section>
   </main>
 
   <footer>
     <div>
-      <h3>Soporte Técnico</h3>
-      <p>Email: soporte@hydromind.com</p>
-      <p>Teléfono: +502 4573 5468</p>
-      <p>Ubicación: 7a Avenida zona 4 3, Chimaltenango</p>
-      <p>Horarios: De lunes a viernes de 9am a 6pm</p>
-    </div>
-    <div>
+      <h3>HydroMind</h3>
       <p>&copy; 2025 HydroMind. Todos los derechos reservados.</p>
     </div>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>

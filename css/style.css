@@ -104,11 +104,10 @@ section.visible {
   opacity: 1;
 }
 
-/* Carousel y fondo de inicio */
 .inicio-fondo-carousel {
   position: relative;
   width: 100%;
-  height: calc(100vh - 116px); /* Ajusta según header(64px) + footer(52px) */
+  height: calc(100vh - 116px);
   max-height: 600px;
   min-height: 300px;
   overflow: hidden;
@@ -148,44 +147,6 @@ section.visible {
   padding: 1em 2em;
   border-radius: 8px;
   max-width: 600px;
-}
-
-.producto {
-  margin-bottom: 2em;
-}
-
-footer {
-  width: 100%;
-  box-sizing: border-box;
-  background-color: var(--primary);
-  color: white;
-  padding: 1.5em 2em;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 1em;
-  font-size: 0.9em;
-  height: 52px; /* Para calcular altura del carousel */
-}
-
-footer h3 {
-  margin-top: 0;
-}
-
-footer p {
-  margin: 0.3em 0;
-  max-width: 300px;
-}
-
-.placeholder-img {
-  width: 100%;
-  max-width: 300px;
-  height: 200px;
-  background-color: #ccc;
-  margin: 1em 0;
-  display: block;
 }
 
 .menu-productos {
@@ -230,19 +191,11 @@ footer p {
   display: block;
 }
 
-.oculto {
-  display: none;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.imagen-producto {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  object-fit: contain;
 }
 
 .boton-compra {
@@ -261,16 +214,38 @@ footer p {
   background-color: var(--header-bg);
 }
 
-.inicio-fondo-carousel {
-  /* ya definido arriba */
-}
-
-.imagen-producto {
+footer {
   width: 100%;
-  max-width: 400px;
-  height: auto;
-  object-fit: contain;
+  box-sizing: border-box;
+  background-color: var(--primary);
+  color: white;
+  padding: 1.5em 2em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1em;
+  font-size: 0.9em;
+  height: 52px;
 }
 
-.encabezado {
-  display
+footer h3 {
+  margin-top: 0;
+}
+
+footer p {
+  margin: 0.3em 0;
+  max-width: 300px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
