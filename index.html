@@ -7,6 +7,7 @@
   <base href="/HydroMind1/">
   <title>HydroMind</title>
   <link rel="stylesheet" href="css/style.css" />
+  <script src="https://kit.fontawesome.com/a2e0c123d4.js" crossorigin="anonymous"></script>
   <script defer src="js/main.js"></script>
 </head>
 <body>
@@ -14,10 +15,10 @@
     <button id="closeBtn">&times;</button>
     <nav>
       <ul>
-        <li><a href="#" data-target="inicio">🏠 Inicio</a></li>
-        <li><a href="#" data-target="sobre-nosotros">ℹ️ Sobre Nosotros</a></li>
-        <li><a href="#" data-target="productos">🛒 Nuestros Productos</a></li>
-        <li><a href="#" data-target="contacto">📞 Contacto</a></li>
+        <li><a href="#" data-target="inicio"><i class="fas fa-home"></i> Inicio</a></li>
+        <li><a href="#" data-target="sobre-nosotros"><i class="fas fa-info-circle"></i> Sobre Nosotros</a></li>
+        <li><a href="#" data-target="productos"><i class="fas fa-shopping-cart"></i> Nuestros Productos</a></li>
+        <li><a href="#" data-target="contacto"><i class="fas fa-phone-alt"></i> Contacto</a></li>
       </ul>
     </nav>
   </div>
@@ -92,16 +93,28 @@
   </main>
 
   <footer>
-    <div>
-      <h3>Soporte Técnico</h3>
-      <p>Email: soporte@hydromind.com</p>
-      <p>Teléfono: +502 4573 5468</p>
-      <p>Ubicación: 7a Avenida zona 4 3, Chimaltenango</p>
-      <p>Horarios: De lunes a viernes de 9am a 6pm</p>
-    </div>
-    <div>
-      <p>&copy; 2025 HydroMind. Todos los derechos reservados.</p>
+    <div class="footer-grid">
+      <div>
+        <h3>Soporte Técnico</h3>
+        <p>Email: soporte@hydromind.com</p>
+        <p>Teléfono: +502 4573 5468</p>
+        <p>Ubicación: 7a Avenida zona 4 3, Chimaltenango</p>
+        <p>Horarios: Lunes a viernes de 9am a 6pm</p>
+      </div>
+      <div class="footer-copy">
+        <p>&copy; 2025 HydroMind. Todos los derechos reservados.</p>
+      </div>
     </div>
   </footer>
+
+  <!-- Modal para producto agotado -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h3>Producto Agotado</h3>
+      <p>Gracias por tu interés. Este producto no está disponible por el momento.</p>
+      <p>¡Pronto volverá a estar en stock!</p>
+    </div>
+  </div>
 </body>
 </html>
