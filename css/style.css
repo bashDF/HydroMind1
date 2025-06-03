@@ -30,8 +30,6 @@ header {
   border: none;
   color: white;
   cursor: pointer;
- 
- 
 }
 
 .sidebar {
@@ -66,9 +64,11 @@ nav ul {
   list-style: none;
   padding: 0;
 }
+
 nav li {
   margin: 1em 0;
 }
+
 nav a {
   color: white;
   text-decoration: none;
@@ -79,6 +79,7 @@ nav a {
   display: inline-block;
   transition: background 0.3s;
 }
+
 nav a:hover {
   background-color: var(--header-bg);
 }
@@ -86,12 +87,14 @@ nav a:hover {
 main {
   padding: 2em;
 }
+
 section {
   margin-bottom: 4em;
   display: none;
   opacity: 0;
   transition: opacity 0.5s ease;
 }
+
 section.visible {
   display: block;
   opacity: 1;
@@ -110,17 +113,18 @@ section.visible {
 }
 
 footer {
-  width: 100%
+  width: 100%;
   box-sizing: border-box;
   background-color: var(--primary);
   color: white;
   padding: 2em;
-   display: flex;
+  display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
   flex-wrap: wrap;
   gap: 1em;
+  font-size: 0.9em;
 }
 
 footer h3 {
@@ -131,16 +135,6 @@ footer p {
   margin: 0.3em 0;
   max-width: 300px;
 }
-@media (max-width: 768px){
-footer {
-flex-direction: column;
-align-items: center;
-text-align: center;
-}
-footer p {
-max- width:none;
-}
-}
 
 .placeholder-img {
   width: 100%;
@@ -150,6 +144,7 @@ max- width:none;
   margin: 1em 0;
   display: block;
 }
+
 .menu-productos {
   display: flex;
   gap: 1em;
@@ -197,27 +192,97 @@ max- width:none;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
+.inicio-fondo-carousel {
+  position: relative;
+  width: 100%;
+  height: 350px;
+  overflow: hidden;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+.inicio-fondo-carousel .slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
 
+.inicio-fondo-carousel .slide.active {
+  opacity: 1;
+}
 
+.texto-inicio {
+  position: relative;
+  color: white;
+  z-index: 2;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 1em;
+  border-radius: 8px;
+}
 
+.imagen-producto {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  object-fit: contain;
+}
+
+.encabezado {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: var(--header-bg);
+  color: white;
+  padding: 1em;
+  position: relative;
+}
+
+.contenedor-logo-titulo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: 2.5em; /* deja espacio para el botón */
+}
+
+.logo-encabezado {
+  height: 40px;
+  width: 40px;
+  object-fit: contain;
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+/* === MEDIA QUERY UNIFICADA === */
 @media (max-width: 768px) {
-   footer {
+  footer {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    padding: 1.5em 1em;
   }
 
   footer p {
     max-width: none;
   }
-}
 
-{
   nav ul li {
     display: block;
     margin: 0.5em 0;
@@ -258,89 +323,15 @@ max- width:none;
     max-width: 100%;
   }
 
-  footer {
-    font-size: 0.9em;
-    padding: 1.5em 1em;
-  }
-.inicio-fondo-carousel {
-  position: relative;
-  width: 100%;
-  height: 350px;
-  overflow: hidden;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.inicio-fondo-carousel .slide {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-}
-
-.inicio-fondo-carousel .slide.active {
-  opacity: 1;
-}
-
-.texto-inicio {
-  position: relative;
-  color: white;
-  z-index: 2;
-  text-align: center;
-  background-color: rgba(0,0,0,0.4);
-  padding: 1em;
-  border-radius: 8px;
-}
-
-@media (max-width: 768px) {
   .inicio-fondo-carousel {
     height: 250px;
   }
+
   .texto-inicio h2 {
     font-size: 1.4em;
   }
+
   .texto-inicio p {
     font-size: 0.95em;
   }
 }
-
-.imagen-producto {
-  width: 100%;
-  max-width: 400px;
-  height: auto;
-  object-fit: contain;
-}
-.encabezado {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  background-color: var(--header-bg);
-  color: white;
-  padding: 1em;
-  position: relative;
-}
-
-.contenedor-logo-titulo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-left: 2.5em; /* deja espacio para el botón */
-}
-}
-.logo-encabezado {
-  height:40px;
-  width: 40px;
-  object-fit: contain;
-  display: inline-block;
- padding: 0;
- margin: 0;
- 
-}
-
-
-
