@@ -276,7 +276,50 @@ footer {
   color: #333;
 }
 
-/* Responsive adjustments */
+/* === NUEVO: Estilo Control de Riego === */
+.riego-contenedor {
+  background-color: white;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  max-width: 600px;
+  margin: auto;
+}
+
+#humedad-deseada {
+  width: 100%;
+  margin: 10px 0;
+}
+
+.boton-riego {
+  background-color: var(--accent);
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.boton-riego:hover {
+  background-color: var(--primary);
+}
+
+.tabla-riego {
+  width: 100%;
+  margin-top: 1rem;
+  border-collapse: collapse;
+}
+
+.tabla-riego th,
+.tabla-riego td {
+  padding: 0.5rem;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
   .sidebar {
     width: 75vw;
@@ -304,4 +347,33 @@ footer {
   .menu-productos {
     gap: 0.5rem;
   }
+}
+/* === NUEVO: Acerca del Proyecto === */
+#acerca-proyecto {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin: 2rem 0;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.acerca-contenido p {
+  margin-bottom: 1rem;
+}
+
+#acerca-proyecto h3 {
+  margin-top: 1.5rem;
+  color: var(--accent);
+}
+
+#acerca-proyecto ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+}
+
+#acerca-proyecto li {
+  margin-bottom: 0.5rem;
 }

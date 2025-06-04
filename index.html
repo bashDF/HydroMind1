@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
   <title>HydroMind</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css" />
   <script src="https://kit.fontawesome.com/a2e0c123d4.js" crossorigin="anonymous"></script>
   <script defer src="js/main.js"></script>
 </head>
@@ -17,6 +17,7 @@
         <li><a href="#" data-target="inicio"><i class="fas fa-home"></i> Inicio</a></li>
         <li><a href="#" data-target="sobre-nosotros"><i class="fas fa-info-circle"></i> Sobre Nosotros</a></li>
         <li><a href="#" data-target="productos"><i class="fas fa-cogs"></i> Productos</a></li>
+        <li><a href="#" data-target="riego"><i class="fas fa-tint"></i> Control de Riego</a></li>
         <li><a href="#" data-target="contacto"><i class="fas fa-phone-alt"></i> Contacto</a></li>
       </ul>
     </nav>
@@ -24,7 +25,7 @@
 
   <header>
     <button id="menuBtn">&#9776;</button>
-    <img src="assets/favicon.png" alt="HydroMind Logo" class="logo-encabezado">
+    <img src="assets/favicon.png" alt="HydroMind Logo" class="logo-encabezado" />
     <h1 class="titulo-principal">HydroMind</h1>
   </header>
 
@@ -45,6 +46,33 @@
       <p>Somos una empresa que ofrece sistemas de riego eficientes y tecnológicos.</p>
     </section>
 
+    <section id="acerca-proyecto" class="seccion">
+      <h2>Acerca del Proyecto</h2>
+      <div class="acerca-contenido">
+        <p>
+          Este proyecto consiste en el <strong>diseño e implementación de un sistema de riego automático</strong> utilizando una placa Arduino, sensores de humedad del suelo, una bomba de agua y otros componentes electrónicos.
+        </p>
+        <p>
+          El sistema <strong>monitorea la humedad del sustrato en tiempo real</strong> y activa el riego solo cuando es necesario, optimizando el consumo de agua y asegurando el cuidado adecuado de las plantas.
+        </p>
+
+        <h3>¿A quién está dirigido?</h3>
+        <ul>
+          <li><strong>Agricultores y viveros pequeños o medianos:</strong> que buscan optimizar el riego y reducir costos operativos.</li>
+          <li><strong>Empresas de agricultura urbana:</strong> huertos comunitarios o invernaderos tecnificados en ciudades.</li>
+          <li><strong>Jardineros avanzados:</strong> personas con cultivos en casa o jardines extensos que valoran la automatización.</li>
+          <li><strong>Instituciones educativas:</strong> universidades o centros agrícolas que necesiten sistemas didácticos o de monitoreo.</li>
+        </ul>
+
+        <h3>Perfil del Usuario</h3>
+        <ul>
+          <li><strong>Edad:</strong> Adultos (25–65 años) con interés en tecnología o agricultura.</li>
+          <li><strong>Ingresos:</strong> Medianos a altos.</li>
+          <li><strong>Ubicación:</strong> Zonas rurales, semiurbanas o ciudades con agricultura urbana.</li>
+        </ul>
+      </div>
+    </section>
+
     <section id="productos" class="seccion">
       <h2>Nuestros productos</h2>
       <div class="menu-productos">
@@ -62,8 +90,12 @@
         <p>Programable por horarios y humedad del suelo.</p>
         <div class="galeria-producto">
           <button class="btn-galeria" onclick="cambiarImagen(this, -1)">⟨</button>
-          <img src="assets/producto1-1.jpg" class="imagen-producto"
-               data-index="0" data-images='["assets/producto1-1.jpg", "assets/producto1-2.jpg", "assets/producto1-3.jpg"]'>
+          <img
+            src="assets/producto1-1.jpg"
+            class="imagen-producto"
+            data-index="0"
+            data-images='["assets/producto1-1.jpg", "assets/producto1-2.jpg", "assets/producto1-3.jpg"]'
+          />
           <button class="btn-galeria" onclick="cambiarImagen(this, 1)">⟩</button>
         </div>
         <button class="boton-compra">Comprar</button>
@@ -75,11 +107,44 @@
         <p>Programable por horarios y humedad del suelo.</p>
         <div class="galeria-producto">
           <button class="btn-galeria" onclick="cambiarImagen(this, -1)">⟨</button>
-          <img src="assets/producto2-1.jpg" class="imagen-producto"
-               data-index="0" data-images='["assets/producto2-1.jpg", "assets/producto2-2.jpg", "assets/producto2-3.jpg"]'>
+          <img
+            src="assets/producto2-1.jpg"
+            class="imagen-producto"
+            data-index="0"
+            data-images='["assets/producto2-1.jpg", "assets/producto2-2.jpg", "assets/producto2-3.jpg"]'
+          />
           <button class="btn-galeria" onclick="cambiarImagen(this, 1)">⟩</button>
         </div>
         <button class="boton-compra">Comprar</button>
+      </div>
+    </section>
+
+    <section id="riego" class="seccion">
+      <h2>Control de Riego Automático</h2>
+      <div class="riego-contenedor">
+        <label for="humedad-deseada"
+          >Humedad deseada: <span id="humedad-valor">50%</span></label
+        >
+        <input type="range" id="humedad-deseada" min="0" max="100" value="50" />
+
+        <p>
+          Humedad actual del suelo: <strong><span id="humedad-actual">--</span>%</strong>
+        </p>
+        <button class="boton-riego" id="activar-riego">Activar Riego</button>
+
+        <h3>Historial de Riego</h3>
+        <table class="tabla-riego">
+          <thead>
+            <tr>
+              <th>Fecha</th>
+              <th>Hora</th>
+              <th>Duración (min)</th>
+            </tr>
+          </thead>
+          <tbody id="historial-riego">
+            <!-- Se agrega dinámicamente -->
+          </tbody>
+        </table>
       </div>
     </section>
 

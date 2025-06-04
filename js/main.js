@@ -99,3 +99,12 @@ function mostrarProducto(productoId) {
     producto.scrollIntoView({ behavior: 'smooth' });
   }
 }
+// === Control de Riego JS ===
+document.addEventListener("DOMContentLoaded", () => {
+  const slider = document.getElementById("humedad-deseada");
+  const humedadValor = document.getElementById("humedad-valor");
+  const humedadActual = document.getElementById("humedad-actual");
+  const activarBtn = document.getElementById("activar-riego");
+  const historialBody = document.getElementById("historial-riego");
+
+ 
