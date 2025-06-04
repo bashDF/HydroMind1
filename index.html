@@ -55,7 +55,6 @@
         <p>
           El sistema <strong>monitorea la humedad del sustrato en tiempo real</strong> y activa el riego solo cuando es necesario, optimizando el consumo de agua y asegurando el cuidado adecuado de las plantas.
         </p>
-
         <h3>¿A quién está dirigido?</h3>
         <ul>
           <li><strong>Agricultores y viveros pequeños o medianos:</strong> que buscan optimizar el riego y reducir costos operativos.</li>
@@ -122,14 +121,9 @@
     <section id="riego" class="seccion">
       <h2>Control de Riego Automático</h2>
       <div class="riego-contenedor">
-        <label for="humedad-deseada"
-          >Humedad deseada: <span id="humedad-valor">50%</span></label
-        >
+        <label for="humedad-deseada">Humedad deseada: <span id="humedad-valor">50%</span></label>
         <input type="range" id="humedad-deseada" min="0" max="100" value="50" />
-
-        <p>
-          Humedad actual del suelo: <strong><span id="humedad-actual">--</span>%</strong>
-        </p>
+        <p>Humedad actual del suelo: <strong><span id="humedad-actual">--</span>%</strong></p>
         <button class="boton-riego" id="activar-riego">Activar Riego</button>
 
         <h3>Historial de Riego</h3>
@@ -141,9 +135,7 @@
               <th>Duración (min)</th>
             </tr>
           </thead>
-          <tbody id="historial-riego">
-            <!-- Se agrega dinámicamente -->
-          </tbody>
+          <tbody id="historial-riego"></tbody>
         </table>
       </div>
     </section>
@@ -171,9 +163,9 @@
   </footer>
 
   <div id="modal" class="modal">
-    <div class="modal-content">
+    <div class="modal-content" tabindex="0">
       <span class="close-modal">&times;</span>
-      <h3>Producto agotado</h3>
+      <h3 id="modal-message">Producto agotado</h3>
       <p>Gracias por tu interés. Este producto no está disponible por el momento.</p>
     </div>
   </div>

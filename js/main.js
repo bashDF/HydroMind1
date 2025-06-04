@@ -1,161 +1,137 @@
-document.addEventListener("DOMContentLoaded", () => {
-  // Menú lateral
-  const sidebar = document.querySelector(".sidebar");
+document.addEventListener("DOMContentLoaded", function () {
+  const sidebar = document.getElementById("sidebar");
   const menuBtn = document.getElementById("menuBtn");
   const closeBtn = document.getElementById("closeBtn");
+  const links = document.querySelectorAll("nav a");
+  const sections = document.querySelectorAll("main .seccion");
 
+  const modal = document.getElementById("modal");
+  const modalMessage = document.getElementById("modal-message");
+  const modalClose = document.querySelector(".close-modal");
+  const compraBtns = document.querySelectorAll(".boton-compra");
+
+  // Mostrar sección guardada
+  const lastSection = localStorage.getItem("ultima-seccion");
+  if (lastSection && document.getElementById(lastSection)) {
+    sections.forEach(sec => sec.classList.remove("visible"));
+    document.getElementById(lastSection).classList.add("visible");
+  } else {
+    document.getElementById("inicio").classList.add("visible");
+  }
+
+  // Mostrar barra lateral
   menuBtn.addEventListener("click", () => {
     sidebar.classList.add("visible");
-    menuBtn.setAttribute("aria-expanded", "true");
   });
 
+  // Cerrar barra lateral
   closeBtn.addEventListener("click", () => {
     sidebar.classList.remove("visible");
-    menuBtn.setAttribute("aria-expanded", "false");
   });
 
   // Navegación entre secciones
-  const enlacesNav = document.querySelectorAll(".sidebar nav a");
-  const secciones = document.querySelectorAll("main .seccion");
-
-  enlacesNav.forEach((enlace) => {
-    enlace.addEventListener("click", (e) => {
+  links.forEach(link => {
+    link.addEventListener("click", (e) => {
       e.preventDefault();
-      const id = enlace.getAttribute("href").substring(1);
+      const target = link.dataset.target;
+      if (!target || !document.getElementById(target)) return;
 
-      secciones.forEach((sec) => {
-        sec.classList.toggle("visible", sec.id === id);
-      });
-
-      // Cerrar sidebar si está visible en móvil
+      sections.forEach(sec => sec.classList.remove("visible"));
+      document.getElementById(target).classList.add("visible");
+      localStorage.setItem("ultima-seccion", target);
       sidebar.classList.remove("visible");
-      menuBtn.setAttribute("aria-expanded", "false");
     });
   });
 
-  // Carrusel de fondo en sección inicio
+  // Carrusel de fondo
   const slides = document.querySelectorAll(".inicio-fondo-carousel .slide");
-  let currentSlide = 0;
+  let currentIndex = 0;
 
-  function cambiarSlide() {
-    slides.forEach((slide, idx) => {
-      slide.classList.toggle("active", idx === currentSlide);
-    });
-    currentSlide = (currentSlide + 1) % slides.length;
+  if (slides.length > 1) {
+    setInterval(() => {
+      slides[currentIndex].classList.remove("active");
+      currentIndex = (currentIndex + 1) % slides.length;
+      slides[currentIndex].classList.add("active");
+    }, 5000);
   }
 
-  if (slides.length > 0) {
-    cambiarSlide();
-    setInterval(cambiarSlide, 5000); // Cambia cada 5 segundos
-  }
-
-  // Menú de productos
-  const productoLinks = document.querySelectorAll(".producto-link");
-  const detallesProducto = document.querySelectorAll(".detalle-producto");
-
-  productoLinks.forEach((link) => {
-    link.addEventListener("click", () => {
-      const productoId = link.getAttribute("data-producto");
-
-      detallesProducto.forEach((detalle) => {
-        detalle.classList.toggle("visible", detalle.id === productoId);
-      });
-    });
-  });
-
-  // Galería de imágenes en productos
-  const btnPrev = document.getElementById("btn-prev");
-  const btnNext = document.getElementById("btn-next");
-  const imagenProducto = document.getElementById("imagen-producto");
-  let indiceImagen = 0;
-
-  // Función para actualizar la imagen mostrada
-  function actualizarImagen() {
-    if (!imagenProducto) return;
-    const visibleDetalle = [...detallesProducto].find((detalle) => detalle.classList.contains("visible"));
-    if (!visibleDetalle) return;
-
-    const imgs = visibleDetalle.querySelectorAll("img");
-    if (imgs.length === 0) return;
-
-    indiceImagen = (indiceImagen + imgs.length) % imgs.length;
-    imagenProducto.src = imgs[indiceImagen].src;
-    imagenProducto.alt = imgs[indiceImagen].alt || "Imagen del producto";
-  }
-
-  btnPrev?.addEventListener("click", () => {
-    const visibleDetalle = [...detallesProducto].find((detalle) => detalle.classList.contains("visible"));
-    if (!visibleDetalle) return;
-
-    const imgs = visibleDetalle.querySelectorAll("img");
-    if (imgs.length === 0) return;
-
-    indiceImagen = (indiceImagen - 1 + imgs.length) % imgs.length;
-    imagenProducto.src = imgs[indiceImagen].src;
-    imagenProducto.alt = imgs[indiceImagen].alt || "Imagen del producto";
-  });
-
-  btnNext?.addEventListener("click", () => {
-    const visibleDetalle = [...detallesProducto].find((detalle) => detalle.classList.contains("visible"));
-    if (!visibleDetalle) return;
-
-    const imgs = visibleDetalle.querySelectorAll("img");
-    if (imgs.length === 0) return;
-
-    indiceImagen = (indiceImagen + 1) % imgs.length;
-    imagenProducto.src = imgs[indiceImagen].src;
-    imagenProducto.alt = imgs[indiceImagen].alt || "Imagen del producto";
-  });
-
-  // Botón Comprar que abre modal
-  const btnCompra = document.getElementById("btn-compra");
-  const modal = document.getElementById("modal");
-  const closeModalBtn = document.querySelector(".close-modal");
-
-  btnCompra?.addEventListener("click", () => {
-    if (modal) {
+  // Modal productos agotados
+  compraBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      modalMessage.textContent = "Este producto está agotado actualmente. ¡Gracias por tu interés! Pronto estará disponible.";
       modal.style.display = "block";
-      modal.setAttribute("aria-hidden", "false");
-      closeModalBtn?.focus();
-    }
+      modal.querySelector(".modal-content").focus();
+    });
   });
 
-  closeModalBtn?.addEventListener("click", () => {
-    if (modal) {
-      modal.style.display = "none";
-      modal.setAttribute("aria-hidden", "true");
-      btnCompra?.focus();
-    }
+  modalClose.addEventListener("click", () => {
+    modal.style.display = "none";
   });
 
-  // Cerrar modal al hacer clic fuera del contenido
   window.addEventListener("click", (e) => {
     if (e.target === modal) {
       modal.style.display = "none";
-      modal.setAttribute("aria-hidden", "true");
-      btnCompra?.focus();
     }
   });
 
-  // Control de riego - función simple de simulación
-  const btnIniciarRiego = document.getElementById("btn-iniciar-riego");
-  const humedadInput = document.getElementById("humedad-deseada");
-  const estadoRiegoSpan = document.getElementById("estado-riego");
-
-  btnIniciarRiego?.addEventListener("click", () => {
-    const humedad = parseInt(humedadInput.value, 10);
-    if (isNaN(humedad) || humedad < 0 || humedad > 100) {
-      alert("Por favor, introduce un valor válido entre 0 y 100.");
-      return;
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      modal.style.display = "none";
     }
-
-    estadoRiegoSpan.textContent = "Iniciando riego...";
-    btnIniciarRiego.disabled = true;
-
-    // Simula proceso de riego (3 segundos)
-    setTimeout(() => {
-      estadoRiegoSpan.textContent = `Riego completado para humedad deseada de ${humedad}%.`;
-      btnIniciarRiego.disabled = false;
-    }, 3000);
   });
+
+  // === Control de Riego JS ===
+  const slider = document.getElementById("humedad-deseada");
+  const humedadValor = document.getElementById("humedad-valor");
+  const humedadActual = document.getElementById("humedad-actual");
+  const activarBtn = document.getElementById("activar-riego");
+  const historialBody = document.getElementById("historial-riego");
+
+  if (slider && humedadValor) {
+    slider.addEventListener("input", () => {
+      humedadValor.textContent = `${slider.value}%`;
+    });
+  }
+
+  if (activarBtn && historialBody) {
+    activarBtn.addEventListener("click", () => {
+      const now = new Date();
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${now.toLocaleDateString()}</td>
+        <td>${now.toLocaleTimeString()}</td>
+        <td>5</td>
+      `;
+      historialBody.appendChild(row);
+
+      humedadActual.textContent = slider.value;
+    });
+  }
 });
+
+// Galería de productos
+function cambiarImagen(button, direccion) {
+  const container = button.parentElement;
+  const img = container.querySelector('.imagen-producto');
+  const imageList = JSON.parse(img.dataset.images);
+  let currentIndex = parseInt(img.dataset.index);
+
+  currentIndex += direccion;
+  if (currentIndex < 0) currentIndex = imageList.length - 1;
+  if (currentIndex >= imageList.length) currentIndex = 0;
+
+  img.src = imageList[currentIndex];
+  img.dataset.index = currentIndex;
+}
+
+// Mostrar detalle de producto
+function mostrarProducto(productoId) {
+  const productos = document.querySelectorAll('.detalle-producto');
+  productos.forEach(p => p.classList.add('oculto'));
+
+  const producto = document.getElementById(productoId);
+  if (producto) {
+    producto.classList.remove('oculto');
+    producto.scrollIntoView({ behavior: 'smooth' });
+  }
+}
