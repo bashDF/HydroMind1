@@ -1,3 +1,4 @@
+<!-- REEMPLAZA TU ARCHIVO HTML CON ESTE -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -17,6 +18,9 @@
         <li><a href="#" data-target="inicio"><i class="fas fa-home"></i> Inicio</a></li>
         <li><a href="#" data-target="sobre-nosotros"><i class="fas fa-info-circle"></i> Sobre Nosotros</a></li>
         <li><a href="#" data-target="productos"><i class="fas fa-cogs"></i> Productos</a></li>
+        <li><a href="#" data-target="resolvemos"><i class="fas fa-question-circle"></i> ¿Qué resolvemos?</a></li>
+        <li><a href="#" data-target="fundamento"><i class="fas fa-book"></i> Fundamento y Objetivos</a></li>
+        <li><a href="#" data-target="publicidad"><i class="fas fa-bullhorn"></i> Publicidad y Marketing</a></li>
         <li><a href="#" data-target="riego"><i class="fas fa-tint"></i> Control de Riego</a></li>
         <li><a href="#" data-target="contacto"><i class="fas fa-phone-alt"></i> Contacto</a></li>
       </ul>
@@ -37,6 +41,7 @@
         <div class="texto-inicio">
           <h2>Bienvenido</h2>
           <p>Soluciones de riego automatizado para el campo y jardín.</p>
+          <p><strong>Riega con inteligencia y ahorra con eficiencia</strong></p>
         </div>
       </div>
     </section>
@@ -44,32 +49,10 @@
     <section id="sobre-nosotros" class="seccion">
       <h2>Sobre nosotros</h2>
       <p>Somos una empresa que ofrece sistemas de riego eficientes y tecnológicos.</p>
-    </section>
-
-    <section id="acerca-proyecto" class="seccion">
-      <h2>Acerca del Proyecto</h2>
-      <div class="acerca-contenido">
-        <p>
-          Este proyecto consiste en el <strong>diseño e implementación de un sistema de riego automático</strong> utilizando una placa Arduino, sensores de humedad del suelo, una bomba de agua y otros componentes electrónicos.
-        </p>
-        <p>
-          El sistema <strong>monitorea la humedad del sustrato en tiempo real</strong> y activa el riego solo cuando es necesario, optimizando el consumo de agua y asegurando el cuidado adecuado de las plantas.
-        </p>
-        <h3>¿A quién está dirigido?</h3>
-        <ul>
-          <li><strong>Agricultores y viveros pequeños o medianos:</strong> que buscan optimizar el riego y reducir costos operativos.</li>
-          <li><strong>Empresas de agricultura urbana:</strong> huertos comunitarios o invernaderos tecnificados en ciudades.</li>
-          <li><strong>Jardineros avanzados:</strong> personas con cultivos en casa o jardines extensos que valoran la automatización.</li>
-          <li><strong>Instituciones educativas:</strong> universidades o centros agrícolas que necesiten sistemas didácticos o de monitoreo.</li>
-        </ul>
-
-        <h3>Perfil del Usuario</h3>
-        <ul>
-          <li><strong>Edad:</strong> Adultos (25–65 años) con interés en tecnología o agricultura.</li>
-          <li><strong>Ingresos:</strong> Medianos a altos.</li>
-          <li><strong>Ubicación:</strong> Zonas rurales, semiurbanas o ciudades con agricultura urbana.</li>
-        </ul>
-      </div>
+      <h3>Misión</h3>
+      <p>Diseñar, desarrollar y promover sistemas de riego automatizados basados en tecnología Arduino que permitan un uso eficiente y responsable del agua. Fomentamos la innovación tecnológica y el aprendizaje práctico entre estudiantes.</p>
+      <h3>Visión</h3>
+      <p>Aspiramos a ser líderes en soluciones sostenibles para jardines y áreas verdes, inspirando a jóvenes a desarrollar tecnologías con impacto ambiental positivo.</p>
     </section>
 
     <section id="productos" class="seccion">
@@ -85,16 +68,13 @@
 
       <div id="kit-riego" class="detalle-producto oculto">
         <h3>Kit de Riego Doméstico</h3>
-        <p>Automatiza el riego de jardines pequeños. Incluye bomba, microcontrolador y mangueras.</p>
+        <p>Automatiza el riego de jardines pequeños. Incluye bomba, microcontrolador, mangueras, sensor de humedad, válvula solenoide y módulo Wi-Fi.</p>
         <p>Programable por horarios y humedad del suelo.</p>
+        <p><strong>Precio de producción:</strong> Q770</p>
+        <p><strong>Vida útil estimada:</strong> 2 años en temporadas productivas</p>
         <div class="galeria-producto">
           <button class="btn-galeria" onclick="cambiarImagen(this, -1)">⟨</button>
-          <img
-            src="assets/producto1-1.jpg"
-            class="imagen-producto"
-            data-index="0"
-            data-images='["assets/producto1-1.jpg", "assets/producto1-2.jpg", "assets/producto1-3.jpg"]'
-          />
+          <img src="assets/producto1-1.jpg" class="imagen-producto" data-index="0" data-images='["assets/producto1-1.jpg", "assets/producto1-2.jpg", "assets/producto1-3.jpg"]' />
           <button class="btn-galeria" onclick="cambiarImagen(this, 1)">⟩</button>
         </div>
         <button class="boton-compra">Comprar</button>
@@ -102,42 +82,60 @@
 
       <div id="sistema-cultivos" class="detalle-producto oculto">
         <h3>Sistema para Cultivos</h3>
-        <p>Riego automatizado para parcelas medianas.</p>
+        <p>Riego automatizado para parcelas medianas. Incluye bomba, microcontrolador, sensor de humedad, válvula solenoide, mangueras y conectividad remota.</p>
         <p>Programable por horarios y humedad del suelo.</p>
+        <p><strong>Precio de producción:</strong> Q770</p>
+        <p><strong>Vida útil estimada:</strong> 2 años en temporadas productivas</p>
         <div class="galeria-producto">
           <button class="btn-galeria" onclick="cambiarImagen(this, -1)">⟨</button>
-          <img
-            src="assets/producto2-1.jpg"
-            class="imagen-producto"
-            data-index="0"
-            data-images='["assets/producto2-1.jpg", "assets/producto2-2.jpg", "assets/producto2-3.jpg"]'
-          />
+          <img src="assets/producto2-1.jpg" class="imagen-producto" data-index="0" data-images='["assets/producto2-1.jpg", "assets/producto2-2.jpg", "assets/producto2-3.jpg"]' />
           <button class="btn-galeria" onclick="cambiarImagen(this, 1)">⟩</button>
         </div>
         <button class="boton-compra">Comprar</button>
       </div>
     </section>
 
-    <section id="riego" class="seccion">
-      <h2>Control de Riego Automático</h2>
-      <div class="riego-contenedor">
-        <label for="humedad-deseada">Humedad deseada: <span id="humedad-valor">50%</span></label>
-        <input type="range" id="humedad-deseada" min="0" max="100" value="50" />
-        <p>Humedad actual del suelo: <strong><span id="humedad-actual">--</span>%</strong></p>
-        <button class="boton-riego" id="activar-riego">Activar Riego</button>
+    <section id="resolvemos" class="seccion">
+      <h2>¿Qué resolvemos?</h2>
+      <p><strong>Necesidades según la Pirámide de Maslow:</strong></p>
+      <ul>
+        <li><strong>Seguridad:</strong> Automatización del riego para garantizar el cuidado de las plantas sin intervención constante.</li>
+        <li><strong>Fisiológicas:</strong> Facilita la producción de alimentos mediante huertos y cultivos sostenibles.</li>
+        <li><strong>Autorrealización:</strong> Impulsa proyectos académicos, personales y profesionales en tecnología y medio ambiente.</li>
+      </ul>
+    </section>
 
-        <h3>Historial de Riego</h3>
-        <table class="tabla-riego">
-          <thead>
-            <tr>
-              <th>Fecha</th>
-              <th>Hora</th>
-              <th>Duración (min)</th>
-            </tr>
-          </thead>
-          <tbody id="historial-riego"></tbody>
-        </table>
-      </div>
+    <section id="fundamento" class="seccion">
+      <h2>Fundamento y Objetivos</h2>
+      <h3>Marco Teórico</h3>
+      <p>El avance tecnológico ha permitido el desarrollo de sistemas automatizados que optimizan procesos cotidianos, como el riego de jardines y cultivos. Arduino y sensores de humedad permiten un monitoreo inteligente y preciso, promoviendo sostenibilidad e innovación en el uso del agua.</p>
+      <h3>Objetivos Generales</h3>
+      <ul>
+        <li>Desarrollar un sistema de riego automatizado con Arduino que optimice el uso del agua.</li>
+        <li>Fomentar el aprendizaje práctico en tecnologías electrónicas.</li>
+        <li>Promover el uso eficiente de los recursos naturales.</li>
+        <li>Impulsar el emprendimiento y la innovación tecnológica.</li>
+      </ul>
+      <h3>Objetivos Específicos</h3>
+      <ul>
+        <li>Implementar un prototipo funcional basado en sensores de humedad.</li>
+        <li>Desarrollar habilidades tecnológicas mediante el proyecto.</li>
+        <li>Fomentar el uso sostenible del agua.</li>
+        <li>Promover el emprendimiento en el entorno educativo.</li>
+      </ul>
+    </section>
+
+    <section id="publicidad" class="seccion">
+      <h2>Publicidad y Marketing</h2>
+      <h3>Plan de Acción</h3>
+      <p>Diseñar, construir y promocionar un sistema de riego automatizado con Arduino, incluyendo investigación, programación, pruebas, y presentación del proyecto.</p>
+      <h3>Estrategia de Publicidad</h3>
+      <p>Se implementarán campañas en redes sociales como Facebook e Instagram, enfocadas en jardinería, sostenibilidad y tecnología. Se utilizarán videos, sorteos, y testimonios para generar confianza y atraer usuarios.</p>
+      <h3>Redes Sociales</h3>
+      <p>
+        <a href="https://instagram.com/hydromind" target="_blank"><i class="fab fa-instagram"></i> Instagram</a><br />
+        <a href="https://facebook.com/hydromind" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+      </p>
     </section>
 
     <section id="contacto" class="seccion">
