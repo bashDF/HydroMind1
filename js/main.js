@@ -80,34 +80,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // === Control de Riego JS ===
-  const slider = document.getElementById("humedad-deseada");
-  const humedadValor = document.getElementById("humedad-valor");
-  const humedadActual = document.getElementById("humedad-actual");
-  const activarBtn = document.getElementById("activar-riego");
-  const historialBody = document.getElementById("historial-riego");
-
-  if (slider && humedadValor) {
-    slider.addEventListener("input", () => {
-      humedadValor.textContent = `${slider.value}%`;
-    });
-  }
-
-  if (activarBtn && historialBody) {
-    activarBtn.addEventListener("click", () => {
-      const now = new Date();
-      const row = document.createElement("tr");
-      row.innerHTML = `
-        <td>${now.toLocaleDateString()}</td>
-        <td>${now.toLocaleTimeString()}</td>
-        <td>5</td>
-      `;
-      historialBody.appendChild(row);
-
-      humedadActual.textContent = slider.value;
-    });
-  }
-});
 
 // Galería de productos
 function cambiarImagen(button, direccion) {
@@ -135,3 +107,4 @@ function mostrarProducto(productoId) {
     producto.scrollIntoView({ behavior: 'smooth' });
   }
 }
+});
