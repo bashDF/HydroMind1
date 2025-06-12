@@ -1,3 +1,31 @@
+// Funciones accesibles globalmente
+
+function mostrarProducto(productoId) {
+  const productos = document.querySelectorAll('.detalle-producto');
+  productos.forEach(p => p.classList.add('oculto'));
+
+  const producto = document.getElementById(productoId);
+  if (producto) {
+    producto.classList.remove('oculto');
+    producto.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
+function cambiarImagen(button, direccion) {
+  const container = button.parentElement;
+  const img = container.querySelector('.imagen-producto');
+  const imageList = JSON.parse(img.dataset.images);
+  let currentIndex = parseInt(img.dataset.index);
+
+  currentIndex += direccion;
+  if (currentIndex < 0) currentIndex = imageList.length - 1;
+  if (currentIndex >= imageList.length) currentIndex = 0;
+
+  img.src = imageList[currentIndex];
+  img.dataset.index = currentIndex;
+}
+
+// Lógica principal del sitio
 document.addEventListener("DOMContentLoaded", function () {
   const sidebar = document.getElementById("sidebar");
   const menuBtn = document.getElementById("menuBtn");
@@ -79,32 +107,4 @@ document.addEventListener("DOMContentLoaded", function () {
       modal.style.display = "none";
     }
   });
-
-
-// Galería de productos
-function cambiarImagen(button, direccion) {
-  const container = button.parentElement;
-  const img = container.querySelector('.imagen-producto');
-  const imageList = JSON.parse(img.dataset.images);
-  let currentIndex = parseInt(img.dataset.index);
-
-  currentIndex += direccion;
-  if (currentIndex < 0) currentIndex = imageList.length - 1;
-  if (currentIndex >= imageList.length) currentIndex = 0;
-
-  img.src = imageList[currentIndex];
-  img.dataset.index = currentIndex;
-}
-
-// Mostrar detalle de producto
-function mostrarProducto(productoId) {
-  const productos = document.querySelectorAll('.detalle-producto');
-  productos.forEach(p => p.classList.add('oculto'));
-
-  const producto = document.getElementById(productoId);
-  if (producto) {
-    producto.classList.remove('oculto');
-    producto.scrollIntoView({ behavior: 'smooth' });
-  }
-}
 });
